@@ -34,8 +34,9 @@
          :recursive t
          :with-author nil           ;; Don't include author name
          :with-creator t            ;; Include Emacs and Org versions in footer
-         :with-toc nil                ;; Include a table of contents
+         :with-toc t                ;; Include a table of contents
          :with-title nil
+         ;; :section-numbers 2       ;; include only first two section numbers
          :section-numbers nil       ;; Don't include section numbers
          :time-stamp-file nil
          
@@ -46,45 +47,95 @@
          ;; head, nav, footer
          :html-head "<link rel=\"stylesheet\" href=\"../css/style.css\"/>"
          :html-preamble
-         "<div class='nav'>
-             <ul>
-                 <li><a href='sitemap.html'>'Paieska'</a></li>
-                 <li><a href='20220521195427-problemos.html'>Problemos</a></li>
-                 <li><a href='20220522061457-sandelys.html'>Sandelys</a></li>
-                 <li><a href='20220522193000-tinklas.html'>Tinklas</a></li>
-                 <li class='dropdown'>
-                     <a href='javascript:void(0)' class='dropbtn'>Programos</a>
-                     <div class='dropdown-content'>
-                         <a href='20220326080528-active_directory.html'>Active directory</a>
-                         <a href='20220521192142-o365.html'>o365</a>
-                         <a href='20220414134329-ladas.html'>Ladas</a>
-                         <a href='20220522065228-rdc.html'>RDC</a>
-                         <a href='20220519110504-avix.html'>Avix</a>
-                         <a href='20220414132838-vncviewer.html'>Vncviewer</a>
-                         <a href='20220521201811-wise.html'>Wise</a>
-                         <a href='20220414132558-lansweeper.html'>Lansweeper</a>
-                         <a href='20220422115642-vmware.html'>Vmware</a>
-                         <a href='20220505211200-vikarina.html'>Vikarina</a>
-                         <a href='20220419152044-pulsesecure.html'>Pulse secure</a>
-                         <a href='20220426190652-crowdstrike.html'>Crowdstrike</a>
-                     </div>
-                 </li>
-                 <li class='dropdown'>
-                     <a href='javascript:void(0)' class='dropbtn'>Iranga</a>
-                     <div class='dropdown-content'>
-                         <a href='20220521185729-spausdintuvai.html'>Spausdintuvai</a>
-                         <a href='20220521190020-kompiuteriai.html'>Kompiuteriai</a>
-                         <a href='20220521190334-skaneriai.html'>Skaneriai</a>
-                         <a href='20220422120253-kameros.html'>Kameros</a>
-                         <a href='20220521190443-pelytes.html'>Pelytes</a>
-                         <a href='20220523203440-telefonai.html'>Telefonai</a>
-                         <a href='20220522061256-darbo_rubai.html'>Darbo rubai ir pan</a>
-                         <a href='20220523062804-irangos_pirkimas.html'>Irangos pirkimas</a>
-                     </div>
-                 </li>
-             </ul>
-         </div>
-         <div id=\"updated\">Updated: %C</div>"
+         "<nav class='navbar'>
+          <!-- LOGO -->
+            <a class='logo' href='sitemap.html'>PKCwiki</a>
+            <!-- NAVIGATION MENU -->
+            <ul class='nav-links'>
+                <!-- USING CHECKBOX HACK -->
+                <input type='checkbox' id='checkbox_toggle' />
+                <label for='checkbox_toggle' class='hamburger'>&#9776;</label>
+                <!-- NAVIGATION MENUS -->
+                <div class='menu'>
+                    <li><a href='20220521195427-problemos.html'>Problemos</a></li>
+                    <li><a href='20220522061457-sandelys.html'>Sandelys</a></li>
+                    <li><a href='20220522193000-tinklas.html'>Tinklas</a></li>
+                    <li class='services'>
+                        <a href='/'>Programos</a>
+                        <!-- DROPDOWN MENU -->
+                        <ul class='dropdown'>
+                            <li><a href='20220326080528-active_directory.html'>Active directory</a></li>
+                            <li><a href='20220521192142-o365.html'>o365</a></li>
+                            <li><a href='20220414134329-ladas.html'>Ladas</a></li>
+                            <li><a href='20220522065228-rdc.html'>RDC</a></li>
+                            <li><a href='20220519110504-avix.html'>Avix</a></li>
+                            <li><a href='20220414132838-vncviewer.html'>Vncviewer</a></li>
+                            <li><a href='20220521201811-wise.html'>Wise</a></li>
+                            <li><a href='20220524221035-cop.html'>COP</a></li>
+                            <li><a href='20220414132558-lansweeper.html'>Lansweeper</a></li>
+                            <li><a href='20220422115642-vmware.html'>Vmware</a></li>
+                            <li><a href='20220505211200-vikarina.html'>Vikarina</a></li>
+                            <li><a href='20220419152044-pulsesecure.html'>Pulse secure</a></li>
+                            <li><a href='20220426190652-crowdstrike.html'>Crowdstrike</a></li>
+                        </ul>
+                    </li>
+                    <li class='services'>
+                        <a href='/'>Iranga</a>
+                        <!-- DROPDOWN MENU -->
+                        <ul class='dropdown'>
+                            <li><a href='20220521185729-spausdintuvai.html'>Spausdintuvai</a></li>
+                            <li><a href='20220521190020-kompiuteriai.html'>Kompiuteriai</a></li>
+                            <li><a href='20220521190334-skaneriai.html'>Skaneriai</a></li>
+                            <li><a href='20220422120253-kameros.html'>Kameros</a></li>
+                            <li><a href='20220521190443-pelytes.html'>Pelytes</a></li>
+                            <li><a href='20220523203440-telefonai.html'>Telefonai</a></li>
+                            <li><a href='20220522061256-darbo_rubai.html'>Darbo rubai ir pan</a></li>
+                            <li><a href='20220523062804-irangos_pirkimas.html'>Irangos pirkimas</a></li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+         </nav>"
+         ;; :html-preamble
+         ;; "<div class='nav'>
+         ;;     <ul>
+         ;;         <li><a href='sitemap.html'>'Paieska'</a></li>
+         ;;         <li><a href='20220521195427-problemos.html'>Problemos</a></li>
+         ;;         <li><a href='20220522061457-sandelys.html'>Sandelys</a></li>
+         ;;         <li><a href='20220522193000-tinklas.html'>Tinklas</a></li>
+         ;;         <li class='dropdown'>
+         ;;             <a href='javascript:void(0)' class='dropbtn'>Programos</a>
+         ;;             <div class='dropdown-content'>
+         ;;                 <a href='20220326080528-active_directory.html'>Active directory</a>
+         ;;                 <a href='20220521192142-o365.html'>o365</a>
+         ;;                 <a href='20220414134329-ladas.html'>Ladas</a>
+         ;;                 <a href='20220522065228-rdc.html'>RDC</a>
+         ;;                 <a href='20220519110504-avix.html'>Avix</a>
+         ;;                 <a href='20220414132838-vncviewer.html'>Vncviewer</a>
+         ;;                 <a href='20220521201811-wise.html'>Wise</a>
+         ;;                 <a href='20220414132558-lansweeper.html'>Lansweeper</a>
+         ;;                 <a href='20220422115642-vmware.html'>Vmware</a>
+         ;;                 <a href='20220505211200-vikarina.html'>Vikarina</a>
+         ;;                 <a href='20220419152044-pulsesecure.html'>Pulse secure</a>
+         ;;                 <a href='20220426190652-crowdstrike.html'>Crowdstrike</a>
+         ;;             </div>
+         ;;         </li>
+         ;;         <li class='dropdown'>
+         ;;             <a href='javascript:void(0)' class='dropbtn'>Iranga</a>
+         ;;             <div class='dropdown-content'>
+         ;;                 <a href='20220521185729-spausdintuvai.html'>Spausdintuvai</a>
+         ;;                 <a href='20220521190020-kompiuteriai.html'>Kompiuteriai</a>
+         ;;                 <a href='20220521190334-skaneriai.html'>Skaneriai</a>
+         ;;                 <a href='20220422120253-kameros.html'>Kameros</a>
+         ;;                 <a href='20220521190443-pelytes.html'>Pelytes</a>
+         ;;                 <a href='20220523203440-telefonai.html'>Telefonai</a>
+         ;;                 <a href='20220522061256-darbo_rubai.html'>Darbo rubai ir pan</a>
+         ;;                 <a href='20220523062804-irangos_pirkimas.html'>Irangos pirkimas</a>
+         ;;             </div>
+         ;;         </li>
+         ;;     </ul>
+         ;; </div>
+         ;; <div id=\"updated\">Updated: %C</div>"
          :html-postamble
          "<div class='footer'>
              <hr>
@@ -100,7 +151,7 @@
          :publishing-function org-publish-attachment
          :recursive t)
         ("css"
-         :base-directory "~/Dropbox/documents/org/roam/pkc/static"
+         :base-directory "./css"
          :base-extension "css"
          :publishing-directory "./css"
          :publishing-function org-publish-attachment
